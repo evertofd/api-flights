@@ -1,37 +1,50 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 📌 Flights API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descripción 📋
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API para la gestión de *vuelos* personalizados. Permite crear, listar y eliminar usuarios, pasajeros y vuelos.
 
-## Description
+## Pre-requisitos ⚙️
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
-## Project setup
+- [MongoDb](https://www.mongodb.com/try/download/community)
+- [Node.js](https://nodejs.org/) versión 18.20.3
+- [Nest Js](https://docs.nestjs.com/)
 
+En caso de tener instalado docker puedes levantar la base de datos con:
 ```bash
-$ npm install
+docker run --name mongodb \
+  -d \
+  -p 27017:27017 \
+  -v mongodb_data:/data/db \
+  --restart unless-stopped \
+  mongo:6.0
+```
+Para que la aplicación funcione correctamente, necesitas configurar algunas variables de entorno. En la raíz del proyecto, crea un archivo llamado .env (si no lo tienes ya) y agrega las siguientes variables de entorno:
+
+```env
+#Database Connection
+URI_MONGODB=mongodb://localhost:27017/superFlights
+#JWT
+JWT_SECRET=
+EXPIRES_IN=
+#API
+APP_URL=https://superflights.com
+PORT=3000
 ```
 
-## Compile and run the project
+## Comenzando 🚀
+
+Para iniciar el proyecto localmente:
+
+1. Clona este repositorio.
+2. Ingresa al directorio del proyecto.
+3. Instala las dependencias:
+
+```bash
+npm install
+```
 
 ```bash
 # development
@@ -43,56 +56,32 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## Construido con 🛠️
 
-## Run tests
+- [Node.js](https://nodejs.org/es/)
+- [Nest js](https://docs.nestjs.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [MongoDb](https://www.mongodb.com/try/download/community)
 
-```bash
-# unit tests
-$ npm run test
+## Rutas de la API 📡
 
-# e2e tests
-$ npm run test:e2e
+Si necesitas más detalles y documentación sobre las rutas, puedes acceder a la interfaz de Swagger en la siguiente URL:
 
-# test coverage
-$ npm run test:cov
+**Documentación de la API (Swagger): `api/docs`**
+
+Ahí encontrarás una descripción más detallada de las rutas, los parámetros de entrada y las respuestas esperadas. La documentación está actualizada y es interactiva, lo que te permitirá probar las rutas directamente desde el navegador.
+
+<img width="730" height="885" alt="Captura de pantalla de 2025-08-02 20-16-26" src="https://github.com/user-attachments/assets/10df51c6-da30-4b58-af32-644851a23aed" />
+
+
+
+> Todas las rutas aceptan y responden con JSON.
+
+## Autores ✒️
+
+- **Everto Farías** ❤️
+
+
+
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
